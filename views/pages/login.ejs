@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>SMS | Login</title>
+</head>
+
+<body>
+    <h2>SMS App</h2>
+    <% console.log(JSON.stringify(locals)) %>
+    <% if (locals.alert && locals.alert.message) {%>
+    <div class="feedback">
+        <p>
+            <%= alert.message %>
+        </p>
+    </div>
+    <% } %>
+    <div>
+        <h4>Authenticate using your account information</h4>
+        <form action="/home" method="post">
+            <ul>
+                <li>
+                    <label>Base url: </label>
+                    <input type="text" placeholder="Base Url" name="baseUrl" id="baseUrl" class="long" value="https://oauth-cpaas.att.com" />
+                </li>
+                <li>
+                    <label>Private project key: </label>
+                    <input type="text" placeholder="Private project key" name="privateProjectKey" id="privateProjectKey" />
+                </li>
+                <li>
+                    <label>Private project secret:</label>
+                    <input type="text" placeholder="Private project secret" name="privateProjectSecret" id="privateProjectSecret" />
+                </li>
+            </ul>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+
+</html>

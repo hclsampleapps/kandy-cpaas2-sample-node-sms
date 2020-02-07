@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>SMS | Home</title>
+</head>
+
+<body>
+    <h2>SMS App</h2>
+    <% var val='test' %>
+    <% if (locals.alert && locals.alert.message) {%>
+    <div class="feedback">
+        <p>
+            <%= alert.message %>
+        </p>
+    </div>
+    <% } %>
+    <div>
+        
+        <form >
+                <button type="submit" class="float-rt" formaction="\logout" formmethod="POST">Logout</button>
+                <h4>Conversations</h4>
+            <ul>
+                <li>
+                    <label>Enter destination number:</label>
+                    <input type="text" placeholder="+12082167831" name="number_destination" id="number_destination" />
+                </li>
+                <li>
+                    <label>SMS History</label>
+                    <div id="convo-messages" class="box">
+                        <% console.log(locals.alert) %>
+                        <% if (locals.alert && locals.alert.sendMessage && locals.alert.sendMessage.length > 0) {%>
+                        <% alert.sendMessage.forEach(function(item,index){ %>
+                        <div class="pad">
+                            <%= item %>
+                        </div>
+                        <%})%>
+                        <% }%>
+                    </div>
+                </li>
+                <li>
+                    <label>Message to conversation:</label>
+                    <input type="text" placeholder="Type your message here" name="message_text" id="message_text" class="long" />
+                    <button type="submit" formaction="/send" formmethod="POST">Send</button>
+                </li>
+            </ul>
+        </form>
+    </div>
+</body>
+
+</html>

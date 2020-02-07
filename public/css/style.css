@@ -1,0 +1,36 @@
+.hide {
+	display: none;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+input.long {
+    width: 300px;
+}
+
+ul.inline li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.box {
+    border: 1px solid #333333;
+    height: 200px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.feedback {
+    color: firebrick;
+}
+
+.pad {
+    padding: 5px 5px;
+}
+
+.float-rt {
+    float: right;
+    margin-right: 10px;
+}
