@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@kandy-io/cpaas-nodejs-sdk": "^1.0.0",
+    "@kandy-io/cpaas-nodejs-sdk": "^1.2.1",
     "express": "^4.17.1"
   },
   "devDependencies": {
