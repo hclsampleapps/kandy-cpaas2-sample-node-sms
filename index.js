@@ -2,6 +2,7 @@ const dotenv = require('dotenv')
 const express = require('express')
 const path = require('path')
 const { createClient } = require('@kandy-io/cpaas-nodejs-sdk')
+var request = require('request');
 
 dotenv.config()
 
@@ -89,7 +90,36 @@ server.post('/home', async (req, res) => {
         baseUrl: baseUrl
     })
 
-    res.render('pages/home');
+    var options = {
+        'method': 'POST',
+        'url': baseUrl + '/cpaas/auth/v1/token',
+        'headers': {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        form: {
+            client_id: key,
+            client_secret: secret,
+            grant_type: 'client_credentials',
+            scope: 'openid'
+        }
+    };
+    request(options, function (error, response) {
+        if (error) {
+            const type = 'error';
+            const message = error.message;
+            res.render('pages/login', { alert: { message, type } })
+        } else {
+            if (response.statusCode == 200) {
+                const type = 'success';
+                const message = 'Login Success';
+                res.render('pages/home', { alert: { message, type } })
+            } else {
+                const type = 'error';
+                const message = 'Authentication error';
+                res.render('pages/login', { alert: { message, type } })
+            }
+        }
+    });
 
 })
 
