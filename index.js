@@ -106,7 +106,7 @@ server.post('/home', async (req, res) => {
     request(options, function (error, response) {
         if (error) {
             const type = 'error';
-            const message = error.message;
+            const message = 'Invalid base URL or server is down';
             res.render('pages/login', { alert: { message, type } })
         } else {
             if (response.statusCode == 200) {
@@ -115,7 +115,8 @@ server.post('/home', async (req, res) => {
                 res.render('pages/home', { alert: { message, type } })
             } else {
                 const type = 'error';
-                const message = 'Authentication error';
+                const data = JSON.parse(response.body);
+                const message = data.error_description;
                 res.render('pages/login', { alert: { message, type } })
             }
         }
