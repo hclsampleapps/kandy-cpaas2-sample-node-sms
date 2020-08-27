@@ -2,7 +2,7 @@ const dotenv = require('dotenv')
 const express = require('express')
 const path = require('path')
 const { createClient } = require('@kandy-io/cpaas-nodejs-sdk')
-var request = require('request');
+const request = require('request');
 
 dotenv.config()
 
